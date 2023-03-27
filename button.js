@@ -2,11 +2,20 @@ import data from './public/data/db.json'
 
 const buttonInfo = data.buttons
 
-const buttonGroup = document.createElement('div')
+export const buttonGroup = document.createElement('div')
 buttonGroup.classList.add('buttonGroup')
 
 
-function createButton(btnInfo){
+function createButton(btnInfo) {
   const buttonDom = document.createElement('i')
-
+  buttonDom.classList.add('button')
+  btnInfo.classNames.foreach(e => {
+    buttonDom.classList.add(e)
+  })
+  return buttonDom
 }
+
+buttonInfo.forEach(e => {
+  const buttonDom = createButton(e)
+  buttonGroup.append(buttonDom)
+})

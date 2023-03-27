@@ -9,7 +9,7 @@ function createCard(imageInfo){
   return cardDom
 }
 
-const cardGroup = document.createElement('div')
+export const cardGroup = document.createElement('div')
 cardGroup.classList.add('cardGroup')
 
 
