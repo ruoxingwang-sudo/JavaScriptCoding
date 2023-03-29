@@ -1,4 +1,4 @@
-import data from './public/data/db.json'
+import data from './src/data/db.json'
 
 const imageInfo = data.images
 
@@ -17,3 +17,4 @@ imageInfo.forEach(e=>{
   const cardDom = createCard(e)
   cardGroup.append(cardDom)
 })
+

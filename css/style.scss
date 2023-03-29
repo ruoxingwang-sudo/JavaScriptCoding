@@ -1,0 +1,92 @@
+:root{
+  font: size 10px;
+}
+
+html, body{
+  width: 100vw;
+  height: 100vh;
+}
+
+@mixin setCenter{
+  display: flex;
+  justify-content: center;// left-right center
+  align-items: center;// top-bottom center
+}
+
+#app{
+  width: 100%;
+  height:100%;
+  @include setCenter;
+}
+
+.cardGroup{
+  position: relative;
+  @include setCenter;
+}
+
+$cardArray:(2,3,4);
+
+@mixin cardSetting($nth){
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @if $nth==1 {
+    width: 120rem;
+    min-width: 120rem;
+    aspect-ratio: 16/9;
+    box-shadow: 0 0 1rem black;
+    transition: none;
+  }
+  @else {
+    position: absolute;
+    width: 20rem;
+    min-width: 20rem;
+    aspect-ratio: 2/3;
+    box-shadow:0 30px 50px grey;
+    left: calc(50% + 22rem * ($nth - 2));
+    transition: 0.5s;
+  }
+}
+
+.card{
+  &:nth-child(1){
+    @include cardSetting(1);
+  }
+
+  @each $i in $cardArray{
+    &:nth-child(#{$i}){
+      @include cardSetting(#{$i});
+    }
+  }
+
+  &::nth-child(n+5){
+    @include cardSetting(5);
+    opacity: 0;
+  }
+}
+
+.buttonGroup{
+  position: absolute;
+  @include setCenter;
+  bottom: 5rem;
+  gap: 2rem;
+  
+}
+
+.button{
+  border-radius: 50%;
+  box-shadow: 0 1px 3px #505050;
+  width: 4rem;
+  aspect-ratio: 1/1;
+  background-color: #6497bc;
+  display: block;
+  @include setCenter;
+  cursor: pointer;
+}
+
+.button:active{
+  box-shadow: none;
+}
+
+
+
