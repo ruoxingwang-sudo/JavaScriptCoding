@@ -17,4 +17,12 @@ const leftButton = buttonGroup.querySelector('.left')
 
 const rightButton = buttonGroup.querySelector('.right')
 
+leftButton.addEventListener('click', () => {
+  const cardList = cardGroup.querySelectorAll('.card')
+  cardGroup.prepend(cardList[cardList.length - 1])
+})
 
+rightButton.addEventListener('click', () => {
+  const cardList = cardGroup.querySelectorAll('.card')
+  cardGroup.insertBefore(cardList[0], buttonGroup)
+})
